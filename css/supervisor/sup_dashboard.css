@@ -1,0 +1,294 @@
+/* sup_dashboard.css */
+
+/* Variáveis específicas (se necessário, sobrescrever global) */
+:root {
+   --sigo-blue: #002442; /* Azul Escuro do Header */
+   --text-color-dark: #333;
+   --text-color-light: #555;
+   --background-grey: #f0f2f5; /* Fundo mais suave */
+   --card-background: #fff;
+   --nav-icon-inactive: #6b7280; /* Cinza Tailwind */
+   --nav-icon-active: #2563eb; /* Azul Tailwind */
+   --nav-text-inactive: #6b7280;
+   --nav-text-active: #2563eb;
+   --footer-height: 72px; /* Altura do footer */
+}
+
+/* Estrutura Básica */
+body {
+    background-color: var(--background-grey);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Roboto', Arial, sans-serif;
+    padding-bottom: var(--footer-height); /* Espaço para footer fixo */
+    margin: 0;
+}
+
+.container.mobile-view { /* Aplicar estilos específicos para a visão mobile */
+    width: 100%;
+    max-width: 500px; /* Limite de largura */
+    background-color: var(--background-grey); /* Fundo do container igual ao body */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupar altura total */
+    position: relative; /* Para footer fixo */
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espaçar logo e placeholder */
+    padding: 10px 15px; /* Padding ajustado */
+    background-color: var(--sigo-blue);
+    height: 60px;
+    position: sticky; /* Fixo no topo */
+    top: 0;
+    z-index: 10;
+}
+
+.logo-img {
+    height: 75px; /* Ajustar se necessário */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+}
+.header-placeholder-right {
+    width: 24px; /* Apenas para manter o logo centralizado */
+    height: 24px;
+}
+
+/* Conteúdo Principal */
+.dashboard-content {
+    padding: 20px 15px;
+    flex-grow: 1; /* Ocupar espaço restante */
+    overflow-y: auto; /* Permitir scroll */
+}
+
+.info-header {
+    text-align: center;
+    margin-bottom: 20px; /* Menos espaço */
+}
+
+.info-date {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    font-weight: 400;
+}
+
+.user-panel {
+    margin-bottom: 25px; /* Espaço após painel do usuário */
+    text-align: left; /* Alinhar textos à esquerda */
+}
+
+.unit-name {
+    font-size: 1em;
+    color: var(--text-color-light); /* Mais suave */
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.greeting {
+    font-size: 1.8em;
+    color: var(--text-color-dark);
+    font-weight: 700;
+    margin-bottom: 3px;
+    line-height: 1.2;
+}
+
+.role-title {
+    font-size: 0.9em; /* Menor */
+    color: var(--text-color-light);
+    font-weight: 400;
+}
+
+/* Cards */
+.card-link { /* Estilo para o link que envolve o card */
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ocupar espaço do card */
+    margin-bottom: 15px;
+}
+.card-link:last-child {
+    margin-bottom: 0;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 15px; /* Padding geral do card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:active { /* Efeito de clique */
+    transform: scale(0.98);
+}
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Colaborador */
+.collaborator-card .label {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.collaborator-card .count {
+    font-size: 2.5em; /* Grande */
+    color: var(--text-color-dark);
+    font-weight: 700; /* Mais peso */
+    line-height: 1;
+}
+
+/* Grid de Ação (Mobile: empilhado por padrão, ajuste com media query) */
+.card-grid {
+    margin-top: 15px;
+}
+.action-card {
+    padding: 12px 15px; /* Padding interno menor */
+}
+
+.action-card-header {
+    font-size: 0.8em; /* Menor */
+    color: var(--text-color-light);
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.action-card-content {
+    display: flex;
+    align-items: center;
+}
+
+.icon-container {
+    margin-right: 12px; /* Espaço após ícone */
+    color: var(--sigo-blue); /* Cor do ícone */
+}
+.icon-svg {
+    width: 32px; /* Tamanho do ícone */
+    height: 32px;
+}
+
+.action-card-subtitle {
+    font-weight: 500;
+    color: var(--text-color-dark);
+    font-size: 1rem;
+}
+
+/* Footer de Navegação */
+.footer-nav {
+    position: fixed; /* Fixo na base */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    height: var(--footer-height);
+    display: flex;
+    justify-content: center; /* Centralizar itens dentro */
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-around; /* Distribuir espaço igualmente */
+    align-items: stretch; /* Esticar itens verticalmente */
+    width: 100%;
+    max-width: 500px; /* Limitar largura no centro */
+    height: 100%;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Ocupar espaço igual */
+    padding: 5px 0; /* Padding vertical */
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--nav-text-inactive);
+    transition: color 0.2s ease;
+}
+
+.nav-icon-wrapper {
+    margin-bottom: 3px; /* Espaço entre ícone e texto */
+    color: var(--nav-icon-inactive); /* Cor do ícone */
+    font-size: 1.5rem; /* Tamanho do ícone */
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+.nav-icon-wrapper svg {
+    display: block; /* Remover espaço extra abaixo do SVG */
+    width: 28px; /* Tamanho SVG */
+    height: 28px;
+}
+
+.nav-text {
+    font-size: 0.7rem; /* Texto pequeno */
+    font-weight: 500;
+}
+
+/* Estilo do Item Ativo */
+.nav-item.active .nav-icon-wrapper {
+    color: var(--nav-icon-active);
+}
+.nav-item.active .nav-icon-wrapper svg path {
+    fill: var(--nav-icon-active); /* Mudar fill do SVG */
+}
+.nav-item.active .nav-text {
+    color: var(--nav-text-active);
+}
+
+/* Efeito Hover (opcional) */
+.nav-item:hover .nav-icon-wrapper {
+    color: var(--nav-icon-active);
+}
+.nav-item:hover .nav-icon-wrapper svg path {
+    fill: var(--nav-icon-active);
+}
+.nav-item:hover .nav-text {
+    color: var(--nav-text-active);
+}
+
+
+/* Media Query para telas maiores (se necessário, mas o foco é mobile) */
+@media (min-width: 500px) { /* A partir da largura máxima */
+     body {
+         padding-bottom: 0; /* Remover padding se não for mobile */
+     }
+    .container.mobile-view {
+         margin: 20px auto; /* Centralizar container */
+         min-height: calc(100vh - 40px);
+         border-radius: 10px; /* Borda arredondada */
+    }
+     .footer-nav {
+         /* Ocultar footer em telas maiores */
+         /* display: none; */
+         /* OU Estilizar diferente */
+         position: static;
+         box-shadow: none;
+         height: auto;
+         max-width: none;
+         margin: 0 auto; /* Centralizar */
+         padding: 10px 0;
+         border-top: 1px solid var(--border-color);
+     }
+      .nav-items { max-width: 600px; } /* Limitar largura do nav */
+
+    /* Grid de cards em desktop */
+     .card-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+        gap: 15px; /* Espaço entre colunas */
+    }
+     .card-link { margin-bottom: 0; } /* Remover margem inferior no grid */
+}

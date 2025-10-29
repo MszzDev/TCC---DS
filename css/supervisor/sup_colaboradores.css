@@ -1,0 +1,134 @@
+/* sup_colaboradores.css */
+
+/* Variáveis (herda de global.css) */
+:root {
+    --list-header-bg: #f8f9fa;
+    --list-border-color: #e5e7eb;
+    --icon-view-color: #6b7280;
+    --icon-view-hover-color: var(--nav-icon-active);
+}
+
+/* Estrutura da Página Principal (main) */
+.content-area.collaborators-page {
+    padding: 0; /* Remover padding padrão, controlar internamente */
+    display: flex; /* ESSENCIAL */
+    flex-direction: column; /* ESSENCIAL */
+    flex-grow: 1; /* <<-- IMPORTANTE: Ocupa espaço entre header e footer */
+    overflow: hidden; /* <<-- IMPORTANTE: Evita scroll no main, força scroll interno */
+    background-color: var(--card-background); /* Fundo branco para a área de conteúdo */
+}
+
+/* Cabeçalho da Página (Título, Subtítulo, Busca) */
+.page-header {
+    padding: 15px;
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--list-border-color);
+    flex-shrink: 0; /* Não encolher */
+}
+
+.page-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.page-subtitle {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-bottom: 15px;
+}
+
+/* Campo de Busca */
+.search-container {
+    position: relative;
+}
+
+.search-input { /* Usa .form-control de global.css */
+    padding-left: 40px; /* Espaço para ícone */
+}
+
+
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--placeholder-color);
+    font-size: 1rem;
+    pointer-events: none; /* Para não interferir no clique do input */
+}
+
+/* Cabeçalho da Lista (Sticky) */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--list-header-bg);
+    border-bottom: 1px solid var(--list-border-color);
+    color: var(--text-color-light);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0; /* Não encolher */
+    position: sticky; /* Manter fixo no topo da área de scroll (.collaborator-list) */
+    top: 0; /* Fixar no topo do container de scroll */
+    z-index: 5;
+}
+
+
+/* Lista de Colaboradores (Scrollable) */
+.collaborator-list {
+    flex-grow: 1; /* <<-- IMPORTANTE: Ocupa o espaço restante dentro do main */
+    overflow-y: auto; /* <<-- IMPORTANTE: Permite scroll SÓ na lista */
+    background-color: var(--card-background);
+}
+
+.collaborator-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--list-border-color);
+    text-decoration: none;
+    color: var(--text-color-dark);
+    transition: background-color 0.15s ease;
+}
+.collaborator-item:last-child {
+    border-bottom: none;
+}
+.collaborator-item:hover {
+    background-color: #f9fafb;
+}
+
+.collaborator-name {
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+    flex-grow: 1;
+    min-width: 0; /* Necessário para text-overflow com flex */
+}
+
+.collaborator-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+/* Estilo badge já vem do global.css */
+/* .badge { ... } */
+
+.view-profile-icon {
+    color: var(--icon-view-color);
+    font-size: 1.1rem;
+    transition: color 0.15s ease;
+}
+.collaborator-item:hover .view-profile-icon {
+    color: var(--icon-view-hover-color);
+}
+

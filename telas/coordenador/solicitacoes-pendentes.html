@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGO - Solicitações Pendentes</title>
+    <link rel="stylesheet" href="../../css/common/global.css">
+    <link rel="stylesheet" href="../../css/coordenador/solicitacoes-pendentes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../../img/logo_sigo.png" alt="Logo SIGO" class="sigo-logo-sidebar">
+                <p class="sidebar-subtitle">Sistema Integrado de Gerenciamento Operacional</p>
+            </div>
+            <div class="sidebar-content">
+                <div class="user-greeting">
+                    <h5>Olá, Coordenador</h5>
+                </div>
+                <nav class="sidebar-nav">
+                    <div class="sidebar-section">
+                        <h6>GESTÃO</h6>
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-home fa-fw"></i> Tela Inicial
+                        </a>
+                        <a href="units.html" class="nav-link">
+                            <i class="fas fa-building fa-fw"></i> Unidades
+                        </a>
+                        <a href="prelecoes.html" class="nav-link">
+                            <i class="fas fa-chalkboard-teacher fa-fw"></i> Preleções
+                        </a>
+                        <a href="solicitacoes.html" class="nav-link active"> <i class="fas fa-clipboard-list fa-fw"></i> Solicitações
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                         <h6>ACESSIBILIDADE</h6>
+                        <div class="accessibility-icons">
+                           <button class="accessibility-btn" title="Aumentar fonte">
+                                <i class="fas fa-font"></i><i class="fas fa-plus"></i>
+                            </button>
+                            <button class="accessibility-btn" title="Diminuir fonte">
+                                <i class="fas fa-font"></i><i class="fas fa-minus"></i>
+                            </button>
+                            <button class="accessibility-btn" title="Alto contraste">
+                                <i class="fas fa-adjust"></i>
+                            </button>
+                            <button class="accessibility-btn" title="Leitor de tela">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <img src="../../img/logo_sigo.png" alt="Logo SIGO" class="sigo-logo-header">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <a href="profile.html" class="user-name">Miguel Soares</a>
+                        <span class="user-role">Coordenador</span>
+                    </div>
+                    <img src="https://via.placeholder.com/40/1a3a52/ffffff?text=MS" alt="Avatar do usuário" class="rounded-circle">
+                </div>
+            </header>
+
+            <section class="content-area">
+                <div class="welcome-section">
+                    <h2>Solicitações Pendentes</h2>
+                    <p>Gerencie as solicitações pendentes de aprovação.</p>
+                </div>
+
+                <div class="pending-requests-list">
+                    <div class="card pending-request-item">
+                        <div class="request-info">
+                            <div class="request-header">
+                                <span class="request-date">Ontem</span> - <span class="request-unit">Unidade Jardim Ângela</span>
+                            </div>
+                            <div class="request-content">
+                                <img src="https://via.placeholder.com/32/ffc107/ffffff?text=CS" alt="Avatar" class="rounded-circle me-2 request-avatar">
+                                <strong class="requester-name">César Santos</strong>
+                                <span class="request-action">solicitou</span>
+                                <strong class="request-count">2 Colaboradores</strong>
+                                <span class="request-details">(11:00 às 17:00)</span>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <a href="aprovar-solicitacao.html" class="btn btn-sm btn-primary">Analisar</a>
+                        </div>
+                    </div>
+
+                    <div class="card pending-request-item">
+                        <div class="request-info">
+                            <div class="request-header">
+                                <span class="request-date">Ontem</span> - <span class="request-unit">Unidade Capão Redondo</span>
+                            </div>
+                            <div class="request-content">
+                                <img src="https://via.placeholder.com/32/dc3545/ffffff?text=TR" alt="Avatar" class="rounded-circle me-2 request-avatar">
+                                <strong class="requester-name">Thiago Ribas</strong>
+                                <span class="request-action">solicitou</span>
+                                <strong class="request-count">1 Colaborador</strong>
+                                 <span class="request-details">(13:00 às 19:00)</span>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <a href="aprovar-solicitacao.html" class="btn btn-sm btn-primary">Analisar</a>
+                        </div>
+                    </div>
+
+                    <div class="card pending-request-item">
+                        <div class="request-info">
+                            <div class="request-header">
+                                <span class="request-date">01/03/2025</span> - <span class="request-unit">Unidade Jardim Ângela</span>
+                            </div>
+                            <div class="request-content">
+                                <img src="https://via.placeholder.com/32/1a3a52/ffffff?text=MS" alt="Avatar" class="rounded-circle me-2 request-avatar">
+                                <strong class="requester-name">Miguel Soares</strong>
+                                <span class="request-action">solicitou</span>
+                                <strong class="request-count">2 Colaboradores</strong>
+                                 <span class="request-details">(08:00 às 14:00)</span>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <a href="aprovar-solicitacao.html" class="btn btn-sm btn-primary">Analisar</a>
+                        </div>
+                    </div>
+                     </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
