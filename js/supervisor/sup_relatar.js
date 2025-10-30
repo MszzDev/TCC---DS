@@ -85,39 +85,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Confirmar Envio
     confirmSendButton.addEventListener('click', () => {
-        // Revalida rapidamente, embora improvável que mude
+        // Revalida rapidamente
         if (!validateForm()) {
-            hideModal(); // Fecha modal se a validação falhar subitamente
+            hideModal();
             return;
         }
 
         hideModal(); // Fecha o modal
 
-        // --- SIMULAÇÃO DE ENVIO ---
-        // Pegar valores dos campos readonly (assumindo que eles têm 'value' no HTML)
-        const unidadeInput = form.querySelector('input[value][readonly]'); // Exemplo genérico
-        const supervisorInput = form.querySelectorAll('input[value][readonly]')[1]; // Exemplo
-        const turnoInput = form.querySelectorAll('input[value][readonly]')[2]; // Exemplo
-
-        const unidade = unidadeInput ? unidadeInput.value : 'Unidade não encontrada';
-        const supervisor = supervisorInput ? supervisorInput.value : 'Supervisor não encontrado';
-        const turno = turnoInput ? turnoInput.value : 'Turno não encontrado';
-
-
+        // --- PEGANDO DADOS DO FORMULÁRIO ---
+        const unidade = document.querySelector('.form-card input[value="Jardim Ângela"]').value;
+        const supervisor = document.querySelector('.form-card input[value="Victor Hugo F. Silva"]').value;
+        const turno = document.querySelector('.form-card input[value="Manhã"]').value;
         const selectedResponsavel = responsavelSelect.options[responsavelSelect.selectedIndex].text;
         const selectedFunctionsText = Array.from(document.querySelectorAll('.js-toggle-function.selected'))
                                            .map(btn => btn.textContent.trim());
 
-        console.log('--- RELATÓRIO DE PRELEÇÃO ENVIADO ---');
-        console.log('Unidade:', unidade);
-        console.log('Supervisor:', supervisor);
-        console.log('Turno:', turno);
-        console.log('Responsável pela Preleção:', selectedResponsavel);
-        console.log('Funções Selecionadas:', selectedFunctionsText);
-        console.log('------------------------------------');
+        // --- NOVA LÓGICA DE SALVAMENTO ---
+        try {
+            // Pega a lista de preleções existentes
+            const prelecoesSalvas = localStorage.getItem('sigo_prelecoes');
+            const listaPrelecoes = prelecoesSalvas ? JSON.parse(prelecoesSalvas) : [];
 
-        // Exibe a mensagem de sucesso no topo
-        showToast('Relatório de Preleção enviado com sucesso!', 'success');
+            // Cria o novo objeto de preleção
+            const novaPrelecao = {
+                id: Date.now(),
+                titulo: `Preleção Diária (${new Date().toLocaleDateString('pt-BR')})`,
+                responsavel: selectedResponsavel,
+                cargo: 'Supervisor', // Assumindo que quem relata é o responsável
+                data: new Date().toLocaleDateString('pt-BR'),
+                status: 'Concluída',
+                unidade: unidade,
+                supervisor: supervisor, // Supervisor da unidade
+                turno: turno,
+                funcoes: selectedFunctionsText.join(', ')
+            };
+
+            // Adiciona a nova preleção no início da lista
+            listaPrelecoes.unshift(novaPrelecao);
+
+            // Salva a lista atualizada de volta no localStorage
+            localStorage.setItem('sigo_prelecoes', JSON.stringify(listaPrelecoes));
+
+            // Exibe a mensagem de sucesso no topo
+            showToast('Relatório de Preleção enviado com sucesso!', 'success');
+
+        } catch (error) {
+            console.error("Falha ao salvar preleção:", error);
+            showToast('Erro ao salvar preleção.', 'error');
+        }
+
 
         // Limpar o formulário após o envio
         setTimeout(() => {

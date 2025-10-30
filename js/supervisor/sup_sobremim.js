@@ -51,11 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // 2. MOSTRA A MENSAGEM DE SUCESSO (TOAST)
             showToast();
 
+            // ***** LINHA ADICIONADA *****
+            // Define que a unidade do supervisor ficou INATIVA
+            localStorage.removeItem('sigo_status_unidade_JardimAngela');
+
             // 3. REDIRECIONAMENTO APÓS UM PEQUENO ATRASO
-            const REDIRECT_DELAY_MS = 1500; // 1.5 segundos para o usuário ver o Toast
+            const REDIRECT_DELAY_MS = 1500; 
 
             setTimeout(() => {
-                // Redireciona para a tela de login (ajuste o caminho se necessário)
+                // Redireciona para a tela de login
                 window.location.href = '../../login.html';
             }, REDIRECT_DELAY_MS);
         });

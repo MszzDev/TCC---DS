@@ -1,104 +1,139 @@
-/* sup_hist.css - Estilos unificados para telas de Histórico do Supervisor */
+/* css/supervisor/sup_hist.css - VERSÃO COMPLETA E CORRIGIDA */
 
-/* --- Variáveis Globais (Assume :root de global.css) --- */
+/* --- Variáveis (Copiadas de outros arquivos para garantir consistência) --- */
 :root {
-    /* Cores específicas do histórico, se necessário */
-    --list-header-bg: #f8f9fa;
-    --list-border-color: #e5e7eb;
-    --icon-view-color: #6b7280;
-    --icon-view-hover-color: var(--primary-blue); /* Usar azul primário */
-    --status-approved-color: var(--success-color); /* Verde */
-    --status-pending-color: var(--warning-color); /* Amarelo */
-    --status-rejected-color: var(--danger-color); /* Vermelho */
-
-    /* Variáveis copiadas de outros arquivos para garantir que existam */
-    --primary-blue: #2563EB;
-    --sigo-blue: #002442;
+    /* Cores Globais */
+    --primary-color: #003063;
+    --primary-blue: #2563EB; /* Azul principal (botões/ícones ativos) */
+    --sigo-blue: #002442;    /* Azul escuro (header) */
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --white-color: #ffffff;
+    --dark-color: #343a40;
+    
+    /* Cores de Texto e Fundo */
+    --body-bg: #f4f7f6;
+    --card-background: #fff;
+    --background-grey: #f0f2f5;
     --background-grey-tabs: #e9ecef;
-    --tabs-inactive-color: #6b7280;
+    --border-color: #dee2e6;
+    --list-border-color: #e5e7eb;
+    
     --text-color-dark: #333;
     --text-color-light: #555;
     --label-color: #555;
     --placeholder-color: #999;
-    --border-color: #ddd;
-    --card-background: #fff;
-    --input-background: #fcfcfc;
+    --text-muted: #6c757d;
+
+    /* Cores de Navegação */
     --nav-icon-inactive: #6b7280;
     --nav-icon-active: #2563eb;
     --nav-text-inactive: #6b7280;
     --nav-text-active: #2563eb;
+    --tabs-inactive-color: #6b7280;
+
+    /* Cores de Status Específicas */
+    --status-approved-color: var(--success-color); /* Verde */
+    --status-pending-color: var(--warning-color); /* Amarelo */
+    --status-rejected-color: var(--danger-color); /* Vermelho */
+
+    /* Dimensões */
     --footer-height: 72px;
 }
 
 /* --- Estrutura da Página --- */
-body { /* Garante padding para footer */
-    padding-bottom: var(--footer-height, 72px);
-    background-color: var(--background-grey, #f0f2f5); /* Fundo base */
-    font-family: 'Roboto', Arial, sans-serif; /* Fonte base */
-    margin: 0;
-    display: flex; /* Para centralizar container */
+body {
+    background-color: var(--background-grey);
+    display: flex;
     justify-content: center;
     min-height: 100vh;
+    font-family: 'Roboto', Arial, sans-serif;
+    padding-bottom: var(--footer-height);
+    margin: 0;
 }
 
 .container.mobile-view {
     width: 100%;
     max-width: 500px;
-    background-color: var(--card-background); /* Fundo principal da view */
+    background-color: var(--card-background);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative; /* Para footer fixo */
+    position: relative;
 }
 
 .content-area.historico-page {
     padding: 15px;
-    background-color: var(--card-background); /* Fundo branco */
-    flex-grow: 1; /* Ocupar espaço */
-    display: flex; /* Para permitir scroll interno se necessário */
+    background-color: var(--card-background);
+    flex-grow: 1;
+    display: flex;
     flex-direction: column;
+    overflow: hidden; /* Evitar scroll duplo */
 }
 
-/* --- Header (Copiado/Adaptado de sup_dashboard.css e sup_perfil.css) --- */
+/* --- HEADER SUPERIOR (Garantia de estilos) --- */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 15px;
-    background-color: var(--sigo-blue, #002442);
+    padding: 0 15px;
+    background-color: var(--sigo-blue); /* Cor de fundo */
+    color: #fff;
     height: 60px;
     position: sticky;
     top: 0;
     z-index: 10;
+    position: relative; /* FUNDAMENTAL: Para logo absoluta */
+    overflow: hidden;
 }
+
+/* Estilo para a imagem do logo (Corrigido) */
 .logo-img {
     height: 75px;
+    width: auto;
+    max-width: 180px;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%; /* Centraliza verticalmente */
+    transform: translate(-50%, -50%); /* Centraliza H e V */
     object-fit: contain;
 }
-.header-placeholder-right {
-    width: 24px;
-    height: 24px;
-}
+
+/* Placeholders para centralização */
+.header-placeholder-right,
 .header-back-button {
-    display: inline-flex;
+    min-width: 40px;
+    height: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.header-back-button {
     padding: 5px;
-    margin-right: 10px;
     color: #fff;
     line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
 }
 .header-back-button svg {
     width: 24px;
     height: 24px;
+    display: block;
 }
 
+/* --- FIM DO BLOCO DO HEADER --- */
 
-/* --- Navegação de Abas (Copiado/Adaptado de sup_solicitar.css) --- */
+
+/* --- Navegação de Abas (Copiado de sup_solicitar.css) --- */
 .tabs-nav-container {
     background-color: var(--card-background);
     padding: 10px 15px;
@@ -112,7 +147,7 @@ body { /* Garante padding para footer */
     display: flex;
     width: 100%;
     border-radius: 8px;
-    background-color: var(--background-grey-tabs, #e9ecef);
+    background-color: var(--background-grey-tabs);
     overflow: hidden;
     padding: 4px;
 }
@@ -132,7 +167,7 @@ body { /* Garante padding para footer */
     font-size: 0.95em;
     cursor: pointer;
     font-weight: 500;
-    color: var(--tabs-inactive-color, #6b7280);
+    color: var(--tabs-inactive-color);
     transition: all 0.2s ease;
     border-radius: 6px;
 }
@@ -145,19 +180,18 @@ body { /* Garante padding para footer */
 /* Aba Ativa */
 .tab-link.active .tab-button {
     background-color: var(--card-background);
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     font-weight: 600;
 }
-/* Cor do Ícone Ativo */
 .tab-link.active .tab-button svg path,
-.tab-link.active .tab-button svg { /* Fallback se path não funcionar */
-    fill: var(--primary-blue, #2563EB);
+.tab-link.active .tab-button svg {
+    fill: var(--primary-blue);
 }
 /* Cor do Ícone Inativo */
 .tab-link:not(.active) .tab-button svg path,
 .tab-link:not(.active) .tab-button svg {
-    fill: var(--tabs-inactive-color, #6b7280);
+    fill: var(--tabs-inactive-color);
 }
 
 
@@ -168,7 +202,7 @@ body { /* Garante padding para footer */
 }
 .page-category {
     font-size: 0.9em;
-    color: var(--label-color, #555);
+    color: var(--label-color);
     font-weight: 500;
     margin-bottom: 2px;
 }
@@ -176,7 +210,7 @@ body { /* Garante padding para footer */
     font-size: 1.8em;
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
 }
 
 /* --- Barra de Busca e Filtro de Data --- */
@@ -192,16 +226,16 @@ body { /* Garante padding para footer */
     flex-grow: 1;
     display: flex;
     align-items: center;
-    border: 1px solid var(--border-color, #ddd);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 0 10px;
-    background-color: var(--input-background, #fcfcfc);
+    padding: 0 12px; /* Mais padding */
+    background-color: var(--light-color); /* Fundo cinza claro */
     min-width: 150px;
-    height: 40px;
+    height: 42px; /* Altura padrão */
 }
 .search-icon {
-    color: var(--placeholder-color, #999);
-    margin-right: 8px;
+    color: var(--placeholder-color);
+    margin-right: 10px; /* Mais espaço */
     font-size: 0.9rem;
 }
 .search-input {
@@ -209,49 +243,42 @@ body { /* Garante padding para footer */
     outline: none;
     flex-grow: 1;
     background: transparent;
-    font-size: 1rem;
-    color: var(--text-color-dark, #333);
+    font-size: 0.95rem; /* Tamanho ajustado */
+    color: var(--text-color-dark);
     height: 100%;
 }
 .search-input::placeholder {
-    color: var(--placeholder-color, #999);
+    color: var(--placeholder-color);
 }
 .search-box:focus-within {
-     border-color: var(--primary-blue, #2563EB);
-     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+     border-color: var(--primary-blue);
+     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* Sombra maior */
 }
 
 .date-filter-wrapper {
     display: flex;
     align-items: center;
-    border: 1px solid var(--border-color, #ddd);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    background-color: var(--input-background, #fcfcfc);
-    padding: 0 10px;
+    background-color: var(--light-color);
+    padding: 0 12px;
     cursor: pointer;
-    height: 40px;
+    height: 42px;
     position: relative;
-    min-width: 130px;
+    min-width: 42px; /* Tamanho de um ícone */
 }
 .date-icon {
-    color: var(--placeholder-color, #999);
-    margin-right: 8px;
+    color: var(--placeholder-color);
     font-size: 0.9rem;
     z-index: 0;
 }
-.date-display { /* Opcional: Para mostrar a data via JS */
-     font-size: 0.95rem;
-     color: var(--label-color, #555);
-     font-weight: 500;
-     margin-left: auto;
-     z-index: 0;
-}
+/* Esconde o texto do input date (YYYY-MM-DD) */
 .date-input-field {
     border: none;
     outline: none;
     background: transparent;
     font-size: 0.95rem;
-    color: var(--label-color, #555);
+    color: var(--label-color);
     font-weight: 500;
     cursor: pointer;
     text-align: right;
@@ -261,32 +288,26 @@ body { /* Garante padding para footer */
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
+    opacity: 0.01; /* Quase invisível mas clicável */
     z-index: 1;
 }
-/* Remover setas internas do input date (Webkit) */
-.date-input-field::-webkit-inner-spin-button,
-.date-input-field::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
-
 
 /* --- Lista de Histórico --- */
 .history-list {
     margin-top: 10px;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* Permite scroll só na lista */
+    padding-right: 5px; /* Evitar que scrollbar cole nos cards */
 }
 
 .month-title {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Menor */
     font-weight: 600;
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
     margin-top: 20px;
     margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--list-border-color, #e5e7eb);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--list-border-color);
 }
 .history-list h2:first-of-type {
     margin-top: 0;
@@ -297,9 +318,9 @@ body { /* Garante padding para footer */
 }
 
 .day-of-week {
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: 500;
-    color: var(--text-color-light, #555);
+    color: var(--text-color-light);
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -308,19 +329,20 @@ body { /* Garante padding para footer */
 
 /* --- Card de Histórico Base --- */
 .card.history-card {
-    border: 1px solid var(--list-border-color, #e5e7eb);
-    border-radius: 8px;
+    border: 1px solid var(--list-border-color);
+    border-radius: 10px; /* Mais arredondado */
     padding: 0;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06); /* Sombra sutil */
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
     overflow: hidden;
 }
 .card.history-card:hover {
-     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+     transform: translateY(-2px);
 }
 
 
@@ -329,16 +351,16 @@ body { /* Garante padding para footer */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    background-color: transparent;
-    border-bottom: 1px dashed var(--list-border-color, #e5e7eb);
+    padding: 10px 15px;
+    background-color: var(--light-color);
+    border-bottom: 1px solid var(--list-border-color);
 }
 .solicitation-card .status {
     font-weight: 600;
     font-size: 0.8em;
     text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
     color: #fff;
 }
 .solicitation-card .status.approved { background-color: var(--status-approved-color); }
@@ -346,71 +368,74 @@ body { /* Garante padding para footer */
 .solicitation-card .status.rejected { background-color: var(--status-rejected-color); }
 
 .solicitation-card .date {
-    font-size: 0.8em;
+    font-size: 0.85em;
     font-weight: 500;
-    color: var(--text-color-light, #555);
+    color: var(--text-color-light);
 }
 .solicitation-card .card-body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px 12px;
-    gap: 10px;
+    padding: 15px;
+    gap: 15px;
 }
 .solicitation-card .info-group {
     flex: 1;
-    min-width: 80px;
+    min-width: 100px;
 }
 .solicitation-card .info-label {
     display: block;
     font-size: 0.75em;
-    color: var(--label-color, #555);
+    color: var(--label-color);
     font-weight: 500;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     text-transform: uppercase;
 }
 .solicitation-card .info-value {
     display: block;
-    font-size: 0.9em;
+    font-size: 0.95em;
     font-weight: 500;
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .solicitation-card .card-footer {
-    padding: 10px 12px;
-    border-top: 1px dashed var(--list-border-color, #e5e7eb);
+    padding: 0 15px 15px 15px;
 }
 .solicitation-card .motive-box {
-    margin-top: 3px;
-    padding: 8px 10px;
-    background-color: var(--list-header-bg, #f8f9fa);
-    border-radius: 4px;
-    border: 1px solid var(--list-border-color, #e5e7eb);
-    font-size: 0.85em;
-    color: var(--text-color-light, #555);
-    line-height: 1.4;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: 6px;
+    border: 1px solid var(--list-border-color);
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    line-height: 1.5;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.solicitation-card .motive-box:hover {
+    white-space: normal;
+    overflow: visible;
 }
 
 
 /* --- Card Específico: Preleção --- */
 .prelecao-card {
-    padding: 12px 15px;
+    padding: 15px;
 }
 .prelecao-card .card-header-prelecao {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .prelecao-card .prelecao-title {
-    font-size: 1em;
+    font-size: 1.05em;
     font-weight: 600;
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -424,51 +449,52 @@ body { /* Garante padding para footer */
 }
 .prelecao-card .date {
     font-size: 0.85em;
-    color: var(--text-color-light, #555);
+    color: var(--text-color-light);
     font-weight: 500;
 }
 .prelecao-card .view-icon {
-    color: var(--icon-view-color, #6b7280);
+    color: var(--text-muted); /* Cinza mais sutil */
     font-size: 0.9em;
     transition: color 0.2s ease;
 }
 .prelecao-card:hover .view-icon {
-    color: var(--icon-view-hover-color, #2563EB);
+    color: var(--primary-blue);
 }
 .prelecao-card .card-body-prelecao {
-    padding-top: 8px;
-    border-top: 1px dashed var(--list-border-color, #e5e7eb);
+    padding-top: 12px;
+    border-top: 1px solid var(--list-border-color);
 }
 .prelecao-card .info-label {
     display: block;
     font-size: 0.75em;
-    color: var(--label-color, #555);
+    color: var(--label-color);
     font-weight: 500;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     text-transform: uppercase;
 }
 .prelecao-card .info-value {
     display: block;
-    font-size: 0.9em;
+    font-size: 0.95em;
     font-weight: 400;
-    color: var(--text-color-dark, #333);
+    color: var(--text-color-dark);
     margin-bottom: 5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .prelecao-card .info-value.small {
-     font-size: 0.8em;
-     color: var(--text-color-light, #555);
+     font-size: 0.9em; /* Um pouco maior */
+     color: var(--text-color-light);
      white-space: normal;
      overflow: visible;
      text-overflow: clip;
+     line-height: 1.4;
 }
 .prelecao-card .info-label.mt-1 {
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
-/* --- Footer Nav (Copiado/Adaptado de sup_dashboard.css) --- */
+/* --- Footer Nav --- */
 .footer-nav {
     position: fixed;
     bottom: 0;
@@ -477,7 +503,7 @@ body { /* Garante padding para footer */
     background-color: #fff;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     z-index: 20;
-    height: var(--footer-height, 72px);
+    height: var(--footer-height);
     display: flex;
     justify-content: center;
 }
@@ -498,12 +524,12 @@ body { /* Garante padding para footer */
     padding: 5px 0;
     text-decoration: none;
     cursor: pointer;
-    color: var(--nav-text-inactive, #6b7280);
+    color: var(--nav-text-inactive);
     transition: color 0.2s ease;
 }
 .nav-icon-wrapper {
     margin-bottom: 3px;
-    color: var(--nav-icon-inactive, #6b7280);
+    color: var(--nav-icon-inactive);
     font-size: 1.5rem;
     line-height: 1;
     transition: color 0.2s ease;
@@ -518,24 +544,54 @@ body { /* Garante padding para footer */
     font-weight: 500;
 }
 /* Item Ativo */
-.nav-item.active .nav-icon-wrapper { color: var(--nav-icon-active, #2563eb); }
+.nav-item.active .nav-icon-wrapper { color: var(--nav-icon-active); }
 .nav-item.active .nav-icon-wrapper svg path,
-.nav-item.active .nav-icon-wrapper svg { fill: var(--nav-icon-active, #2563eb); } /* Garantir fill */
-.nav-item.active .nav-text { color: var(--nav-text-active, #2563eb); }
+.nav-item.active .nav-icon-wrapper svg { fill: var(--nav-icon-active); }
+.nav-item.active .nav-text { color: var(--nav-text-active); }
 /* Hover */
-.nav-item:hover .nav-icon-wrapper { color: var(--nav-icon-active, #2563eb); }
+.nav-item:hover .nav-icon-wrapper { color: var(--nav-icon-active); }
 .nav-item:hover .nav-icon-wrapper svg path,
-.nav-item:hover .nav-icon-wrapper svg { fill: var(--nav-icon-active, #2563eb); }
-.nav-item:hover .nav-text { color: var(--nav-text-active, #2563eb); }
+.nav-item:hover .nav-icon-wrapper svg { fill: var(--nav-icon-active); }
+.nav-item:hover .nav-text { color: var(--nav-text-active); }
 
 
 /* Responsividade */
 @media (max-width: 768px) {
     .search-filter-container {
-        flex-direction: column; /* Empilhar busca e data */
-        align-items: stretch; /* Ocupar largura */
+        flex-direction: column;
+        align-items: stretch;
     }
     .search-box, .date-filter-wrapper {
-        width: 100%; /* Largura total */
+        width: 100%;
     }
+}
+
+/* Ajuste para telas maiores */
+@media (min-width: 500px) {
+     body {
+         padding-bottom: 0;
+     }
+    .container.mobile-view {
+         margin: 20px auto;
+         min-height: calc(100vh - 40px);
+         border-radius: 10px;
+    }
+     .footer-nav {
+         position: static;
+         box-shadow: none;
+         height: auto;
+         max-width: none;
+         margin: 0 auto;
+         padding: 10px 0;
+         border-top: 1px solid var(--border-color);
+     }
+      .nav-items { max-width: 600px; }
+}
+.logo-img {
+    height: 43px; /* Ajustar se necessário */
+    position: absolute;
+    left: 50%;
+    top: 50%; /* <-- LINHA ADICIONADA */
+    transform: translate(-50%, -50%); /* <-- LINHA MODIFICADA */
+    object-fit: contain;
 }

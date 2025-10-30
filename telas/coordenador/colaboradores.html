@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGO - Solicitações Pendentes</title>
+    <title>SIGO - Colaboradores</title>
     <link rel="stylesheet" href="../../css/common/global.css">
-    <link rel="stylesheet" href="../../css/coordenador/solicitacoes-pendentes.css">
-    <link rel="stylesheet" href="../../css/common/accessibility.css">
+    <link rel="stylesheet" href="../../css/coordenador/colaboradores.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/common/accessibility.css">
 </head>
 <body>
     <div class="d-flex">
@@ -25,21 +25,22 @@
                     <div class="sidebar-section">
                         <h6>GESTÃO</h6>
                         <a href="dashboard.html" class="nav-link">
-                            <i class="fas fa-home fa-fw"></i> Tela Inicial
+                            <i class="fas fa-home"></i> Tela Inicial
                         </a>
-                        <a href="colaboradores.html" class="nav-link">
-                        <i class="fas fa-user-group"></i> Colaboradores
+                        <a href="colaboradores.html" class="nav-link active">
+                            <i class="fas fa-user-group"></i> Colaboradores
                         </a>
                         <a href="units.html" class="nav-link">
-                            <i class="fas fa-building fa-fw"></i> Unidades
+                            <i class="fas fa-building"></i> Unidades
                         </a>
                         <a href="prelecoes.html" class="nav-link">
-                            <i class="fas fa-chalkboard-teacher fa-fw"></i> Preleções
+                            <i class="fas fa-chalkboard-teacher"></i> Preleções
                         </a>
-                        <a href="solicitacoes.html" class="nav-link active"> <i class="fas fa-clipboard-list fa-fw"></i> Solicitações
+                        <a href="solicitacoes.html" class="nav-link">
+                            <i class="fas fa-clipboard-list"></i> Solicitações
                         </a>
                     </div>
-                    </nav>
+                   </nav>
             </div> <div class="sidebar-footer">
                 <div class="accessibility-menu">
                     <button class="acc-option-btn" title="Aumentar fonte">
@@ -73,25 +74,38 @@
                         <a href="profile.html" class="user-name">Miguel Soares</a>
                         <span class="user-role">Coordenador</span>
                     </div>
-                    <img src="https://via.placeholder.com/40/1a3a52/ffffff?text=MS" alt="Avatar do usuário" class="rounded-circle">
+                    <img src="https://via.placeholder.com/40/1a3a52/ffffff?text=MS" alt="User Avatar" class="rounded-circle">
                 </div>
             </header>
 
             <section class="content-area">
                 <div class="welcome-section">
-                    <h2>Solicitações Pendentes</h2>
-                    <p>Gerencie as solicitações pendentes de aprovação.</p>
+                    <h2>Colaboradores</h2>
+                    <p>Visualize os colaboradores organizados por unidade.</p>
                 </div>
 
-                <div class="pending-requests-list">
+                <div class="container">
+                    <div class="unidade">
+                        <h2>Unidade Jardim Ângela</h2>
+                        <div class="colaborador"><span>João Silva</span><span>Turno: Manhã</span><button class="ativo-btn">Ativo</button><span>Supervisor: Carla Souza</span></div>
+                        <div class="colaborador"><span>Maria Oliveira</span><span>Turno: Tarde</span><button class="ativo-btn">Ativo</button><span>Supervisor: Carla Souza</span></div>
+                        <div class="colaborador"><span>Felipe Santos</span><span>Turno: Noite</span><button class="ativo-btn">Ativo</button><span>Supervisor: Carla Souza</span></div>
+                        <div class="colaborador"><span>Renata Lima</span><span>Turno: Manhã</span><button class="ativo-btn">Ativo</button><span>Supervisor: Carla Souza</span></div>
                     </div>
+            
+                    <div class="unidade">
+                        <h2>Unidade Capão Redondo</h2>
+                        <div class="colaborador"><span>Lucas Almeida</span><span>Turno: Tarde</span><button class="ativo-btn">Ativo</button><span>Supervisor: Marcos Pereira</span></div>
+                        <div class="colaborador"><span>Ana Souza</span><span>Turno: Noite</span><button class="ativo-btn">Ativo</button><span>Supervisor: Marcos Pereira</span></div>
+                        <div class="colaborador"><span>Diego Fernandes</span><span>Turno: Manhã</span><button class="ativo-btn">Ativo</button><span>Supervisor: Marcos Pereira</span></div>
+                        <div class="colaborador"><span>Juliana Rocha</span><span>Turno: Tarde</span><button class="ativo-btn">Ativo</button><span>Supervisor: Marcos Pereira</span></div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
-
-    <script src="../../js/coordenador/solicitacoes-pendentes.js" defer></script>
+    
     <script src="../../js/common/transitions.js" defer></script>
-    <script src="../../js/common/accessibility.js" defer></script>
-
+    <script src="../../js/common/accessibility.js" defer></script> 
 </body>
 </html>

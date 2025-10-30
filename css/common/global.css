@@ -10,7 +10,7 @@
     --secondary-color: #6c757d; /* Cinza secundário */
     --success-color: #28a745; /* Verde sucesso */
     --danger-color: #dc3545; /* Vermelho perigo */
-    --warning-color: #ffc107; /* Amarelo aviso */
+    --warning-color: #28a745;  /* Verde sucesso */
     --info-color: #17a2b8; /* Azul claro informação */
     --light-color: #f8f9fa; /* Cinza claro */
     --dark-color: #343a40; /* Cinza escuro */
@@ -589,9 +589,6 @@ textarea.form-control {
         height: 34px;
     }
 }
-/* ======================================== */
-/* === ESTILOS HEADER SUPERVISOR (LOGO) === */
-/* ======================================== */
 
 /* --- HEADER SUPERIOR --- */
 .header {
@@ -651,4 +648,141 @@ textarea.form-control {
     width: 24px;
     height: 24px;
     display: block; /* Evitar espaço extra */
+}
+/* 1. Define a animação de fade-in E slide-in */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(10px); /* Começa 10px abaixo */
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+/* 2. Aplica a animação (mais longa e suave) */
+body {
+    opacity: 0; /* Começa invisível */
+    animation: fadeIn 0.4s ease-out forwards; /* Duração: 0.4s com easing suave */
+    
+    /* 3. Prepara a transição de SAÍDA (fade-out E slide-out) */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* 4. Classe que o JavaScript adiciona para o fade-out/slide-out */
+body.page-fade-out {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important; /* Sobe 10px ao sair */
+}
+
+/* 1. Garante que a sidebar seja um container flex-column */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    /* (estilos existentes como width, background, etc.) */
+}
+
+/* 2. Faz o conteúdo principal (links) crescer e ter scroll */
+.sidebar-content {
+    flex-grow: 1; /* << IMPORTANTE: Faz crescer */
+    overflow-y: auto; /* Permite scroll só nesta área */
+    padding: 0 var(--spacing-md);
+    /* (removemos o padding-bottom daqui, se houver) */
+}
+
+/* 3. Estiliza o novo "rodapé" da sidebar (que NÃO rola) */
+.sidebar-footer {
+    flex-shrink: 0; /* Impede que encolha */
+    padding: 0 var(--spacing-md) var(--spacing-md); /* Padding inferior */
+    position: relative; /* Para o menu pop-up */
+}
+
+/* 4. Estiliza o botão "ACESSIBILIDADE" */
+.sidebar-footer .acc-toggle-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0,0,0,0.15); /* Cor de fundo sutil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.sidebar-footer .acc-toggle-btn:hover {
+    background-color: rgba(0,0,0,0.25);
+    color: #fff;
+}
+.sidebar-footer .acc-toggle-btn .acc-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* 5. O menu pop-up (escondido) */
+.sidebar-footer .accessibility-menu {
+    display: none; /* Começa escondido */
+    position: absolute;
+    bottom: 100%; /* Aparece ACIMA do botão */
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    margin-bottom: 8px; /* Espaço do botão */
+    
+    background-color: var(--card-bg, #fff);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    
+    display: flex;
+    gap: 8px;
+    
+    /* Animação */
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+}
+
+/* 6. Botões de opção (A+, A-, etc.) */
+.acc-option-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Ocupa espaço igual */
+    height: 44px;
+    background-color: transparent;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 6px;
+    color: var(--text-color-dark, #333);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.acc-option-btn:hover {
+    background-color: var(--light-color, #f4f4f4);
+}
+.acc-option-btn .fa-font { position: relative; }
+.acc-option-btn .fa-plus,
+.acc-option-btn .fa-minus {
+    position: absolute;
+    font-size: 0.5rem;
+    top: -2px;
+    right: -5px;
+    font-weight: bold;
+}
+
+/* 7. Lógica de Exibição (controlada por JS) */
+.sidebar-footer.active .accessibility-menu {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+/* Gira a seta */
+.sidebar-footer.active .acc-toggle-btn .acc-icon {
+    transform: rotate(180deg);
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/common/global.css">
     <link rel="stylesheet" href="../../css/coordenador/aprovar-solicitacao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="../../css/common/accessibility.css"> </head>
 <body>
     <div class="d-flex">
         <aside class="sidebar">
@@ -15,6 +15,7 @@
                 <img src="../../img/logo_sigo.png" alt="Logo SIGO" class="sigo-logo-sidebar">
                 <p class="sidebar-subtitle">Sistema Integrado de Gerenciamento Operacional</p>
             </div>
+            
             <div class="sidebar-content">
                 <div class="user-greeting">
                     <h5>Olá, Coordenador</h5>
@@ -25,35 +26,33 @@
                         <a href="dashboard.html" class="nav-link">
                             <i class="fas fa-home fa-fw"></i> Tela Inicial
                         </a>
+                        <a href="colaboradores.html" class="nav-link">
+                            <i class="fas fa-user-group"></i> Colaboradores
+                        </a>
                         <a href="units.html" class="nav-link">
                             <i class="fas fa-building fa-fw"></i> Unidades
                         </a>
                         <a href="prelecoes.html" class="nav-link">
                             <i class="fas fa-chalkboard-teacher fa-fw"></i> Preleções
                         </a>
-                        <a href="solicitacoes.html" class="nav-link active"> <i class="fas fa-clipboard-list fa-fw"></i> Solicitações
+                        <a href="solicitacoes.html" class="nav-link active">
+                            <i class="fas fa-clipboard-list fa-fw"></i> Solicitações
                         </a>
                     </div>
-                    <div class="sidebar-section">
-                         <h6>ACESSIBILIDADE</h6>
-                        <div class="accessibility-icons">
-                           <button class="accessibility-btn" title="Aumentar fonte">
-                                <i class="fas fa-font"></i><i class="fas fa-plus"></i>
-                            </button>
-                            <button class="accessibility-btn" title="Diminuir fonte">
-                                <i class="fas fa-font"></i><i class="fas fa-minus"></i>
-                            </button>
-                            <button class="accessibility-btn" title="Alto contraste">
-                                <i class="fas fa-adjust"></i>
-                            </button>
-                            <button class="accessibility-btn" title="Leitor de tela">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        </div>
-                    </div>
                 </nav>
+            </div> <div class="sidebar-footer">
+                <div class="accessibility-menu">
+                    <button class="acc-option-btn" title="Aumentar fonte"><i class="fas fa-font"><i class="fas fa-plus"></i></i></button>
+                    <button class="acc-option-btn" title="Diminuir fonte"><i class="fas fa-font"><i class="fas fa-minus"></i></i></button>
+                    <button class="acc-option-btn" title="Alto contraste"><i class="fas fa-adjust"></i></button>
+                    <button class="acc-option-btn" title="Leitor de tela"><i class="fas fa-volume-up"></i></button>
+                </div>
+                <button id="acc-toggle-button" class="acc-toggle-btn">
+                    <span>ACESSIBILIDADE</span>
+                    <i class="fas fa-chevron-up acc-icon"></i>
+                </button>
             </div>
-        </aside>
+            </aside>
 
         <main class="main-content">
             <header class="main-header">
@@ -78,17 +77,20 @@
                 <div class="card approval-card">
                     <div class="card-body">
                         <div class="unit-info-section">
-                            <h3 class="unit-title">Unidade: Jardim Ângela</h3>
+                            <h3 class="unit-title">Unidade: <span id="det-unidade">...</span></h3>
                             <div class="unit-details">
                                 <div class="detail-item">
                                     <span class="detail-label">Supervisor Solicitante</span>
-                                    <span class="detail-value">César Santos</span> </div>
+                                    <span class="detail-value" id="det-solicitante">...</span> 
+                                </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Turno do Supervisor</span>
-                                    <span class="detail-value">Noite</span> </div>
+                                    <span class="detail-value" id="det-turno">...</span> 
+                                </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Data da Solicitação</span>
-                                    <span class="detail-value">Ontem</span> </div>
+                                    <span class="detail-value" id="det-data">...</span> 
+                                </div>
                             </div>
                         </div>
 
@@ -98,15 +100,16 @@
                                 <div class="request-row">
                                     <div class="request-item">
                                         <span class="request-label">Quantidade Solicitada</span>
-                                        <span class="request-value">2 Colaboradores</span>
+                                        <span class="request-value" id="det-qtd">...</span>
                                     </div>
                                     <div class="request-item">
                                         <span class="request-label">Período Necessário</span>
-                                        <span class="request-value">11:00 às 17:00</span>
+                                        <span class="request-value" id="det-periodo">...</span>
                                     </div>
                                     <div class="request-item">
                                         <span class="request-label">Tipo</span>
-                                        <span class="request-value">Cobertura</span> </div>
+                                        <span class="request-value">Cobertura</span> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,16 +117,22 @@
                         <div class="reason-section">
                             <h4 class="section-title">Motivo Apresentado</h4>
                             <div class="reason-content">
-                                <p>Falta de colaborador devido a atestado médico. Necessário cobrir o posto X durante o período da tarde para garantir a operação.</p>
+                                <p id="det-motivo">...</p>
                             </div>
                         </div>
 
                         <div class="approval-actions">
-                             <a href="solicitacoes-pendentes.html" class="btn btn-secondary me-2">Recusar</a> <a href="solicitacoes-pendentes.html" class="btn btn-primary">Aprovar Solicitação</a> </div>
+                             <button id="btn-recusar" class="btn btn-secondary me-2">Recusar</button> 
+                             <button id="btn-aprovar" class="btn btn-primary">Aprovar Solicitação</button> 
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <script src="../../js/coordenador/aprovar-solicitacao.js" defer></script>
+    <script src="../../js/common/transitions.js" defer></script>
+    <script src="../../js/common/accessibility.js" defer></script>
 </body>
 </html>

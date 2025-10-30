@@ -96,45 +96,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão "Cancelar" no modal: Fecha o modal
     cancelBtn.addEventListener('click', hideModal);
 
-    // Botão "Confirmar" no modal: Processa o envio
+   // Botão "Confirmar" no modal: Processa o envio
     confirmBtn.addEventListener('click', () => {
-        const data = getFormData(); // Revalida (caso algo tenha mudado, embora improvável)
+        const data = getFormData(); // Revalida
         if (data) {
             // 1. Esconde o modal
             hideModal();
 
-            // 2. Simula o envio (substituir por lógica de backend real)
-            console.log('--- Dados da Solicitação Enviada ---');
-            console.log('Unidade:', data.unidade);
-            console.log('Supervisor:', data.supervisor);
-            console.log('Turno:', data.turno);
-            console.log('Qtd Colaboradores:', data.colaborador);
-            console.log('Período:', `${data.horaInicio} às ${data.horaFim}`);
-            console.log('Motivo:', data.motivo);
-            console.log('------------------------------------');
+            // 2. ***** NOVA LÓGICA DE SALVAMENTO *****
+            try {
+                // Pega a lista de solicitações existentes (ou cria uma nova)
+                const solicitacoesSalvas = localStorage.getItem('sigo_solicitacoes');
+                const listaSolicitacoes = solicitacoesSalvas ? JSON.parse(solicitacoesSalvas) : [];
 
-            // 3. Exibe mensagem de sucesso
-            showToast(successToast, 'Solicitação enviada com sucesso!');
+                // Adiciona um ID único e data/status à nova solicitação
+                const novaSolicitacao = {
+                    id: Date.now(), // ID único baseado no tempo
+                    solicitante: data.supervisor,
+                    cargo: 'Supervisor',
+                    unidade: data.unidade,
+                    turno: data.turno,
+                    qtd: data.colaborador,
+                    periodo: `${data.horaInicio} às ${data.horaFim}`,
+                    motivo: data.motivo,
+                    data: new Date().toLocaleDateString('pt-BR'), // Data de hoje
+                    status: 'Pendente' // Status inicial
+                };
 
+                // Adiciona a nova solicitação no início da lista
+                listaSolicitacoes.unshift(novaSolicitacao);
+
+                // Salva a lista atualizada de volta no localStorage
+                localStorage.setItem('sigo_solicitacoes', JSON.stringify(listaSolicitacoes));
+                
+                // 3. Exibe mensagem de sucesso
+                showToast(successToast, 'Solicitação enviada com sucesso!');
+
+            } catch (error) {
+                console.error("Falha ao salvar no localStorage:", error);
+                showToast(errorToast, 'Erro ao salvar solicitação.');
+            }
+            
             // 4. Limpa o formulário após um pequeno atraso
             setTimeout(() => {
-                form.reset(); // Método mais simples para limpar forms
-                 // document.getElementById('colaborador').value = '';
-                 // document.getElementById('hora-inicio').value = '';
-                 // document.getElementById('hora-fim').value = '';
-                 // document.getElementById('motivo').value = '';
-            }, 500); // Meio segundo
-        } else {
-             // Se a revalidação falhar (improvável aqui, mas bom ter)
-             hideModal(); // Garante que o modal feche
-             // A mensagem de erro já foi mostrada por getFormData()
-        }
-    });
+                form.reset(); 
+            }, 500); 
 
-     // Fechar modal clicando fora
-     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            hideModal();
+        } else {
+             hideModal(); 
         }
     });
 

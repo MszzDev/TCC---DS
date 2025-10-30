@@ -9,16 +9,19 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     const password = passwordInput.value.trim();
 
     // Limpa estilos de erro anteriores
-    errorMessage.classList.remove('visible'); // Usa classe para mostrar/esconder
-    usernameInput.classList.remove('input-error'); // Usa classe para borda vermelha
+    errorMessage.classList.remove('visible');
+    usernameInput.classList.remove('input-error');
     passwordInput.classList.remove('input-error');
 
     // Verifica as credenciais
     if (username === 'C123' && password === '123') {
-        // Redireciona para o dashboard do Coordenador (caminho relativo da raiz)
+        // Redireciona para o dashboard do Coordenador
         window.location.href = 'telas/coordenador/dashboard.html';
     } else if (username === 'S123' && password === '123') {
-        // Redireciona para o dashboard do Supervisor (caminho relativo da raiz)
+        // Define que o supervisor S123 (Jardim Ângela) está ATIVO
+        localStorage.setItem('sigo_status_unidade_JardimAngela', 'Ativa');
+        
+        // Redireciona para o dashboard do Supervisor
         window.location.href = 'telas/supervisor/sup_dashboard.html';
     } else {
         // Exibe mensagem de erro e adiciona estilos de erro

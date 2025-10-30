@@ -1,6 +1,6 @@
+/* Conteúdo de: css/coordenador/prelecoes.css */
 /* prelecoes.css - Estilos específicos para a tela de Preleções */
 
-/* Estilos para os botões de filtro de unidade (Herda de solicitacoes.css, mas pode ter ajustes) */
 .unit-filters {
     display: flex;
     flex-wrap: wrap;
@@ -14,8 +14,8 @@
     border-radius: 0.25rem;
     color: var(--text-color);
     background-color: var(--light-color);
-    font-size: 0.9rem; /* Levemente menor */
-    text-decoration: none; /* Garantir que não tenha sublinhado */
+    font-size: 0.9rem;
+    text-decoration: none;
 }
 
 .filter-button:hover {
@@ -41,13 +41,13 @@
 }
 
 .search-input-group {
-    flex-grow: 1; /* Ocupa espaço disponível */
+    flex-grow: 1;
     position: relative;
-    min-width: 200px; /* Largura mínima */
+    min-width: 200px;
 }
 
 .search-input-group .form-control {
-    padding-left: 2.5rem; /* Espaço para o ícone */
+    padding-left: 2.5rem;
 }
 
 .search-input-group .search-icon {
@@ -56,23 +56,23 @@
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
-    pointer-events: none; /* Não bloquear clique no input */
+    pointer-events: none;
 }
 
 .date-input-group {
-    flex-shrink: 0; /* Não encolher */
+    flex-shrink: 0;
 }
 
 .date-input-group .form-control {
-    min-width: 150px; /* Largura mínima para data */
+    min-width: 150px;
 }
 
 /* Estilos para a tabela de preleções */
-.table td span { /* Para alinhar imagem e texto do apresentador */
+.table td span {
     display: inline-block;
     vertical-align: middle;
 }
-.table td .d-block { /* Helper para small abaixo do nome */
+.table td .d-block {
     display: block;
     font-size: 0.8em;
     line-height: 1.2;
@@ -83,16 +83,99 @@
 @media (max-width: 768px) {
     .search-date-section {
         flex-direction: column;
-        align-items: stretch; /* Alinhar itens para ocupar largura total */
+        align-items: stretch;
     }
     .search-input-group,
     .date-input-group {
         width: 100%;
     }
     .unit-filters {
-        justify-content: flex-start; /* Alinhar botões à esquerda */
-        overflow-x: auto; /* Permitir scroll horizontal nos filtros */
-        flex-wrap: nowrap; /* Não quebrar linha */
-        padding-bottom: 10px; /* Espaço para scrollbar */
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
     }
+}
+/* ===========================
+   MODAL DE DETALHES
+   =========================== */
+.modal {
+    display: none; /* Começa escondido */
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 0.3s ease; /* Animação de entrada */
+}
+
+/* Classe que o JS vai usar para mostrar */
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transform: scale(1);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes modalSlideIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--primary-color, #1a3a52);
+}
+
+.modal-content p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+}
+
+.modal-content strong {
+    color: var(--primary-color, #1a3a52);
+}
+
+.btn-fechar {
+    display: block;
+    margin: 15px auto 0;
+    background: var(--primary-color, #1a3a52);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-fechar:hover {
+    background: #163144;
 }
