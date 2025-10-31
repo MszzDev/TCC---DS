@@ -1,16 +1,20 @@
+/* sup_dashboard.css (Atualizado) */
 
-/* Variáveis específicas (se necessário, sobrescrever global) */
+/* Variáveis específicas */
 :root {
    --sigo-blue: #002442; /* Azul Escuro do Header */
    --text-color-dark: #333;
    --text-color-light: #555;
-   --background-grey: #f0f2f5; /* Fundo mais suave */
+   --background-grey: #f0f2f5; 
    --card-background: #fff;
-   --nav-icon-inactive: #6b7280; /* Cinza Tailwind */
-   --nav-icon-active: #2563eb; /* Azul Tailwind */
+   --nav-icon-inactive: #6b7280;
+   --nav-icon-active: #2563eb;
    --nav-text-inactive: #6b7280;
    --nav-text-active: #2563eb;
-   --footer-height: 72px; /* Altura do footer */
+   --footer-height: 72px;
+   /* Cores novas para os ícones */
+   --primary-blue: #2563EB;
+   --prelecao-color: #f59e0b; /* Amarelo/Laranja */
 }
 
 /* Estrutura Básica */
@@ -20,174 +24,200 @@ body {
     justify-content: center;
     min-height: 100vh;
     font-family: 'Roboto', Arial, sans-serif;
-    padding-bottom: var(--footer-height); /* Espaço para footer fixo */
+    padding-bottom: var(--footer-height);
     margin: 0;
 }
 
-.container.mobile-view { /* Aplicar estilos específicos para a visão mobile */
+.container.mobile-view {
     width: 100%;
-    max-width: 500px; /* Limite de largura */
-    background-color: var(--background-grey); /* Fundo do container igual ao body */
+    max-width: 500px;
+    background-color: var(--background-grey);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ocupar altura total */
-    position: relative; /* Para footer fixo */
+    min-height: 100vh;
+    position: relative;
 }
 
-/* Header */
+/* Header (Mantido) */
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espaçar logo e placeholder */
-    padding: 10px 15px; /* Padding ajustado */
+    justify-content: space-between;
+    padding: 10px 15px;
     background-color: var(--sigo-blue);
     height: 60px;
-    position: sticky; /* Fixo no topo */
+    position: sticky;
     top: 0;
     z-index: 10;
 }
-
-/* CÓDIGO CORRIGIDO para css/supervisor/sup_dashboard.css */
-
 .logo-img {
-    height: 43px; /* Ajustar se necessário */
+    height: 75px;
     position: absolute;
     left: 50%;
-    top: 50%; /* <-- LINHA ADICIONADA */
-    transform: translate(-50%, -50%); /* <-- LINHA MODIFICADA */
+    top: 50%; /* Correção de centralização */
+    transform: translate(-50%, -50%); /* Correção de centralização */
     object-fit: contain;
 }
 .header-placeholder-right {
-    width: 24px; /* Apenas para manter o logo centralizado */
+    width: 24px;
     height: 24px;
 }
 
 /* Conteúdo Principal */
 .dashboard-content {
     padding: 20px 15px;
-    flex-grow: 1; /* Ocupar espaço restante */
-    overflow-y: auto; /* Permitir scroll */
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .info-header {
     text-align: center;
-    margin-bottom: 20px; /* Menos espaço */
+    margin-bottom: 20px;
 }
-
 .info-date {
     font-size: 0.9em;
     color: var(--text-color-light);
     font-weight: 400;
 }
 
-.user-panel {
-    margin-bottom: 25px; /* Espaço após painel do usuário */
-    text-align: left; /* Alinhar textos à esquerda */
+/* ======================== */
+/* === NOVO HEADER CARD === */
+/* ======================== */
+.card.dashboard-header-card {
+    background-color: var(--sigo-blue); /* Fundo azul escuro */
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 36, 66, 0.4);
+    margin-bottom: 30px; /* Mais espaço abaixo */
 }
-
-.unit-name {
-    font-size: 1em;
-    color: var(--text-color-light); /* Mais suave */
-    font-weight: 500;
-    margin-bottom: 5px;
+.header-card-greeting {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
 }
-
 .greeting {
     font-size: 1.8em;
-    color: var(--text-color-dark);
+    color: #fff;
     font-weight: 700;
     margin-bottom: 3px;
     line-height: 1.2;
 }
-
-.role-title {
-    font-size: 0.9em; /* Menor */
-    color: var(--text-color-light);
+.unit-name {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 400;
-}
-
-/* Cards */
-.card-link { /* Estilo para o link que envolve o card */
-    text-decoration: none;
-    color: inherit;
-    display: block; /* Ocupar espaço do card */
-    margin-bottom: 15px;
-}
-.card-link:last-child {
     margin-bottom: 0;
 }
-
-.card {
-    background-color: var(--card-background);
-    border-radius: 12px;
-    padding: 15px; /* Padding geral do card */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.header-card-stats-link {
+    text-decoration: none;
+    color: #fff;
+    display: block;
 }
-
-.card:active { /* Efeito de clique */
-    transform: scale(0.98);
+.header-card-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity 0.2s ease;
 }
-.card:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.header-card-stats:hover {
+    opacity: 0.8;
 }
-
-/* Card Colaborador */
-.collaborator-card .label {
-    font-size: 0.9em;
-    color: var(--text-color-light);
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.collaborator-card .count {
-    font-size: 2.5em; /* Grande */
-    color: var(--text-color-dark);
-    font-weight: 700; /* Mais peso */
+.header-card-stats .count {
+    font-size: 2.5em;
+    font-weight: 700;
     line-height: 1;
+    color: #fff;
+    flex-basis: 50px; /* Espaço para o número */
 }
-
-/* Grid de Ação (Mobile: empilhado por padrão, ajuste com media query) */
-.card-grid {
-    margin-top: 15px;
-}
-.action-card {
-    padding: 12px 15px; /* Padding interno menor */
-}
-
-.action-card-header {
-    font-size: 0.8em; /* Menor */
-    color: var(--text-color-light);
+.header-card-stats .label {
+    flex-grow: 1; /* Ocupa o espaço do meio */
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 500;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin-left: 10px; /* Espaço após o número */
 }
+.header-card-stats .fa-arrow-right-long {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* --- Título da Seção --- */
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color-light);
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+
+/* ======================== */
+/* === GRID DE AÇÕES (2 COLUNAS) === */
+/* ======================== */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 15px; /* Espaço entre elas */
+    margin-top: 0;
+}
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 0; 
+}
+
+/* Card de Ação (Estilo melhorado) */
+.card.action-card {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%; /* Faz os cards terem a mesma altura */
+}
+.card.action-card:active { transform: scale(0.98); }
+.card.action-card:hover { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
 
 .action-card-content {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Empilha ícone e texto */
+    align-items: flex-start; /* Alinha à esquerda */
+    gap: 12px;
 }
 
 .icon-container {
-    margin-right: 12px; /* Espaço após ícone */
-    color: var(--sigo-blue); /* Cor do ícone */
+    width: 48px; /* Tamanho do círculo */
+    height: 48px; /* Tamanho do círculo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-container.solicitacao {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+.icon-container.prelecao {
+    background-color: var(--prelecao-color);
+    color: #fff;
 }
 .icon-svg {
-    width: 32px; /* Tamanho do ícone */
-    height: 32px;
+    width: 22px;
+    height: 22px;
 }
 
-.action-card-subtitle {
-    font-weight: 500;
+.action-card-title {
+    font-weight: 600; /* Mais forte */
     color: var(--text-color-dark);
     font-size: 1rem;
+    line-height: 1.3;
 }
 
-/* Footer de Navegação */
+/* Footer (Mantido) */
 .footer-nav {
-    position: fixed; /* Fixo na base */
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -196,61 +226,53 @@ body {
     z-index: 20;
     height: var(--footer-height);
     display: flex;
-    justify-content: center; /* Centralizar itens dentro */
+    justify-content: center;
 }
-
 .nav-items {
     display: flex;
-    justify-content: space-around; /* Distribuir espaço igualmente */
-    align-items: stretch; /* Esticar itens verticalmente */
+    justify-content: space-around;
+    align-items: stretch;
     width: 100%;
-    max-width: 500px; /* Limitar largura no centro */
+    max-width: 500px;
     height: 100%;
 }
-
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1; /* Ocupar espaço igual */
-    padding: 5px 0; /* Padding vertical */
+    flex: 1;
+    padding: 5px 0;
     text-decoration: none;
     cursor: pointer;
     color: var(--nav-text-inactive);
     transition: color 0.2s ease;
 }
-
 .nav-icon-wrapper {
-    margin-bottom: 3px; /* Espaço entre ícone e texto */
-    color: var(--nav-icon-inactive); /* Cor do ícone */
-    font-size: 1.5rem; /* Tamanho do ícone */
+    margin-bottom: 3px;
+    color: var(--nav-icon-inactive);
+    font-size: 1.5rem;
     line-height: 1;
     transition: color 0.2s ease;
 }
 .nav-icon-wrapper svg {
-    display: block; /* Remover espaço extra abaixo do SVG */
-    width: 28px; /* Tamanho SVG */
+    display: block;
+    width: 28px;
     height: 28px;
 }
-
 .nav-text {
-    font-size: 0.7rem; /* Texto pequeno */
+    font-size: 0.7rem;
     font-weight: 500;
 }
-
-/* Estilo do Item Ativo */
 .nav-item.active .nav-icon-wrapper {
     color: var(--nav-icon-active);
 }
 .nav-item.active .nav-icon-wrapper svg path {
-    fill: var(--nav-icon-active); /* Mudar fill do SVG */
+    fill: var(--nav-icon-active);
 }
 .nav-item.active .nav-text {
     color: var(--nav-text-active);
 }
-
-/* Efeito Hover (opcional) */
 .nav-item:hover .nav-icon-wrapper {
     color: var(--nav-icon-active);
 }
@@ -261,36 +283,24 @@ body {
     color: var(--nav-text-active);
 }
 
-
-/* Media Query para telas maiores (se necessário, mas o foco é mobile) */
-@media (min-width: 500px) { /* A partir da largura máxima */
+/* Media Query (Mantido) */
+@media (min-width: 500px) {
      body {
-         padding-bottom: 0; /* Remover padding se não for mobile */
+         padding-bottom: 0;
      }
     .container.mobile-view {
-         margin: 20px auto; /* Centralizar container */
+         margin: 20px auto;
          min-height: calc(100vh - 40px);
-         border-radius: 10px; /* Borda arredondada */
+         border-radius: 10px;
     }
      .footer-nav {
-         /* Ocultar footer em telas maiores */
-         /* display: none; */
-         /* OU Estilizar diferente */
          position: static;
          box-shadow: none;
          height: auto;
          max-width: none;
-         margin: 0 auto; /* Centralizar */
+         margin: 0 auto;
          padding: 10px 0;
          border-top: 1px solid var(--border-color);
      }
-      .nav-items { max-width: 600px; } /* Limitar largura do nav */
-
-    /* Grid de cards em desktop */
-     .card-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Duas colunas */
-        gap: 15px; /* Espaço entre colunas */
-    }
-     .card-link { margin-bottom: 0; } /* Remover margem inferior no grid */
+      .nav-items { max-width: 600px; }
 }

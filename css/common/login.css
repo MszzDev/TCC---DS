@@ -1,33 +1,40 @@
-/* login.css - Estilos específicos para a tela de login unificada */
+/* login.css - Estilos aprimorados */
 
-/* Estilos para a tela de login */
 .login-screen {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     width: 100vw;
-    background-color: var(--body-bg); /* Usa a cor de fundo definida em global.css */
-    padding: var(--spacing-md); /* Adiciona padding para telas pequenas */
+    background-color: var(--body-bg);
+    padding: var(--spacing-md);
 }
 
 .login-container {
-    background-color: var(--card-bg); /* Usa a cor de fundo de card definida em global.css */
-    padding: var(--spacing-xl);
+    background-color: var(--card-bg);
+    /* Aumentado o padding */
+    padding: 2.5rem; 
     border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    /* Sombra mais suave */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 400px; /* Largura máxima do container de login */
+    /* AUMENTADO PARA PC */
+    max-width: 450px; 
     text-align: center;
 }
 
-/* Logo já estilizado em global.css (sigo-logo-login) */
+/* Ajuste fino na logo (substituindo o global.css) */
+.sigo-logo-login {
+    width: 160px; /* Um pouco maior */
+    height: auto;
+    margin-bottom: var(--spacing-sm); /* Menos espaço abaixo */
+}
 
 .login-subtitle {
     font-size: 0.9rem;
-    color: var(--text-muted); /* Usa a cor de texto secundária definida em global.css */
-    margin-top: calc(-1 * var(--spacing-md)); /* Aproximar do logo */
-    margin-bottom: var(--spacing-lg);
+    color: var(--text-muted);
+    margin-top: -5px; /* Mais próximo da logo */
+    margin-bottom: var(--spacing-xl); /* Mais espaço antes do form */
 }
 
 /* Estilos para o formulário */
@@ -37,25 +44,25 @@
 }
 
 .form-group label {
-    display: block; /* Label em linha separada */
+    display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: var(--text-color); /* Usa a cor de texto principal definida em global.css */
+    color: var(--text-color);
     font-size: 0.9rem;
 }
 
-/* Usar form-control de global.css se definido, senão usar este */
+/* Inputs maiores */
 .form-group input {
     display: block;
     width: 100%;
-    padding: 0.6rem 0.75rem; /* Padding ajustado */
+    padding: 0.8rem 1rem; /* Mais padding interno */
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: var(--text-color);
     background-color: var(--white-color);
     background-clip: padding-box;
-    border: 1px solid var(--border-color); /* Usa a cor de borda definida em global.css */
+    border: 1px solid var(--border-color);
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
@@ -64,11 +71,11 @@
 .form-group input:focus {
     color: var(--text-color);
     background-color: var(--white-color);
-    border-color: #86b7fe; /* Azul claro no focus */
+    border-color: #86b7fe;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Sombra de foco */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
-/* Estilo específico para borda vermelha em erro */
+
 .form-group input.input-error {
     border-color: var(--danger-color);
 }
@@ -78,28 +85,29 @@
 }
 
 
-/* Botão Entrar (Usa .btn e .btn-primary de global.css) */
-.btn-login { /* Classe adicional para ajustes específicos se necessário */
+/* Botão maior */
+.btn-login {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.9rem; /* Mais padding */
     font-size: 1.1rem;
-    margin-top: var(--spacing-sm); /* Menos espaço antes do botão */
+    font-weight: 500; /* Um pouco mais forte */
+    margin-top: var(--spacing-md); /* Mais espaço acima */
 }
 
 /* Mensagem de erro */
 .error-text {
-    color: var(--danger-color); /* Vermelho */
+    color: var(--danger-color);
     font-size: 0.85rem;
     margin-top: var(--spacing-md);
-    display: none; /* Escondido por padrão */
+    display: none;
     text-align: center;
 }
-.error-text.visible { /* Classe para mostrar */
+.error-text.visible {
     display: block;
 }
 
 
-/* Responsividade */
+/* Responsividade (Mantida) */
 @media (max-width: 576px) {
     .login-container {
         padding: var(--spacing-lg);

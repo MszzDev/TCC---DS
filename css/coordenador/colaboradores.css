@@ -110,3 +110,15 @@ body {
 .colaborador .ativo-btn {
     margin-right: 20px;
 }
+/* --- Estilo do Ícone de Perfil (Olho) --- */
+.colaborador .view-profile-link {
+    flex-shrink: 0;
+    margin-left: 15px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.colaborador .view-profile-link:hover {
+    color: var(--primary-color);
+}

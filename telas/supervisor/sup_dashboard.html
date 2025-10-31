@@ -6,14 +6,14 @@
     <title>Dashboard Supervisor</title>
     <link rel="stylesheet" href="../../css/common/global.css">
     <link rel="stylesheet" href="../../css/supervisor/sup_dashboard.css">
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
     <div class="container mobile-view"> 
         <header class="header">
-    <img src="../../img/seg_icone.png" alt="Logo SIGO" class="logo-img"> 
-    
-    <div class="header-placeholder-right"></div> 
-</header>
+            <img src="../../img/seg_icone.png" alt="Logo SIGO" class="logo-img">
+            <div class="header-placeholder-right"></div> 
+        </header>
 
         <main class="dashboard-content">
 
@@ -21,47 +21,52 @@
                  <p class="info-date">Outubro, 2025</p>
             </div>
 
-            <div class="user-panel">
-                <p class="unit-name">Unidade Jardim Ângela</p> <h1 class="greeting">Olá, Victor</h1> <p class="role-title">Supervisor</p>
+            <div class="card dashboard-header-card">
+                <div class="header-card-greeting">
+                    <h1 class="greeting">Olá, Victor</h1> 
+                    <p class="unit-name">Unidade Jardim Ângela - Supervisor</p>
+                </div>
+                <a href="sup_colaboradores.html" class="header-card-stats-link">
+                    <div class="header-card-stats">
+                        <p class="count">4</p> 
+                        <p class="label">Colaboradores Ativos</p>
+                        <i class="fas fa-arrow-right-long"></i>
+                    </div>
+                </a>
             </div>
 
-            <a href="sup_colaboradores.html" class="card-link">
-                <div class="card collaborator-card">
-                    <p class="label">Colaboradores Ativos</p>
-                    <p class="count">8</p> </div>
-            </a>
+            <h2 class="section-title">Ações Rápidas</h2>
 
             <div class="card-grid">
                 <a href="sup_solicitar.html" class="card-link">
                     <div class="card action-card">
-                        <p class="action-card-header">Solicitação</p>
                         <div class="action-card-content">
-                            <div class="icon-container">
-                                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.885 13.616q-.82 0-1.41-.591t-.59-1.41t.59-1.41t1.41-.59q.819 0 1.41.59q.59.591.59 1.41q0 .82-.59 1.41q-.591.59-1.41.59m-4.5 5v-.9q0-.465.232-.843q.232-.379.66-.545q.845-.356 1.748-.534q.904-.177 1.86-.177q.916 0 1.821.177q.905.178 1.786.534q.428.166.66.545q.232.378.232.844v.9zm-2.77-7.23q-1.237 0-2.118-.882t-.881-2.118t.88-2.12t2.12-.88t2.118.88t.882 2.12t-.882 2.118t-2.118.882m-7 7.23V16.97q0-.648.357-1.192q.358-.544.973-.804q1.327-.673 2.756-1.015t2.914-.342q.605 0 1.211.063t1.212.167l-.427.446l-.427.447q-.393-.077-.785-.1t-.784-.023q-1.354 0-2.675.292t-2.518.942q-.327.183-.567.456t-.24.663v.646h6v1zm7-8.23q.825 0 1.412-.588t.588-1.412t-.588-1.413t-1.412-.587t-1.413.587t-.587 1.413t.587 1.412t1.413.588"/></svg>
+                            <div class="icon-container solicitacao">
+                               <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.885 13.616q-.82 0-1.41-.591t-.59-1.41t.59-1.41t1.41-.59q.819 0 1.41.59q.59.591.59 1.41q0 .82-.59 1.41q-.591.59-1.41.59m-4.5 5v-.9q0-.465.232-.843q.232-.379.66-.545q.845-.356 1.748-.534q.904-.177 1.86-.177q.916 0 1.821.177q.905.178 1.786.534q.428.166.66.545q.232.378.232.844v.9zm-2.77-7.23q-1.237 0-2.118-.882t-.881-2.118t.88-2.12t2.12-.88t2.118.88t.882 2.12t-.882 2.118t-2.118.882m-7 7.23V16.97q0-.648.357-1.192q.358-.544.973-.804q1.327-.673 2.756-1.015t2.914-.342q.605 0 1.211.063t1.212.167l-.427.446l-.427.447q-.393-.077-.785-.1t-.784-.023q-1.354 0-2.675.292t-2.518.942q-.327.183-.567.456t-.24.663v.646h6v1zm7-8.23q.825 0 1.412-.588t.588-1.412t-.588-1.413t-1.412-.587t-1.413.587t-.587 1.413t.587 1.412t1.413.588"/></svg>
                             </div>
-                            <p class="action-card-subtitle">Solicitar colaborador</p>
+                            <p class="action-card-title">Solicitar Colaborador</p>
                         </div>
                     </div>
                 </a>
 
                 <a href="sup_relatar.html" class="card-link">
                     <div class="card action-card">
-                        <p class="action-card-header">Preleção</p>
                         <div class="action-card-content">
-                             <div class="icon-container">
+                             <div class="icon-container prelecao">
                                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 20V4h16v7.566q-.263-.091-.504-.148q-.24-.056-.496-.112V5H5v14h6.28q.037.28.094.521q.057.24.147.479zm1-1.993V19V5v6.306v-.075zm2.5-1.738h3.96q.055-.255.15-.496l.2-.504H7.5zm0-3.769h6.58q.493-.346.971-.586q.478-.241 1.026-.378V11.5H7.5zm0-3.77h9v-1h-9zM18 22.117q-1.671 0-2.835-1.165Q14 19.787 14 18.116t1.165-2.836T18 14.116t2.836 1.164T22 18.116q0 1.67-1.164 2.835Q19.67 22.116 18 22.116M17.616 21h.769v-2.5h2.5v-.77h-2.5v-2.5h-.77v2.5h-2.5v.77h2.5z"/></svg>
                             </div>
-                            <p class="action-card-subtitle">Adicionar preleção</p>
+                            <p class="action-card-title">Adicionar Preleção</p>
                         </div>
                     </div>
                 </a>
-            </div> </main>
+            </div> 
+        </main>
 
         <footer class="footer-nav">
             <nav class="nav-items">
                 <a href="sup_dashboard.html" class="nav-item active">
                     <div class="nav-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3.692v-5.077q0-.343.233-.575q.232-.233.575-.233h3q.343 0 .576.233q.232.232.232.575V19H18v-8.692q0-.154-.067-.28t-.183-.22L12.366 5.75q-.154-.134-.366-.134t-.365.134L6.25 9.808q-.115.096-.183.22t-.067.28zm-1 0v-8.692q0-.384.172-.727t.474-.565l5.385-4.078q.423-.323.966-.323t.972.323l5.385 4.077q.303.222.474.566q.172.343.172.727V19q0 .402-.299.701T18 20h-3.884q-.344 0-.576-.232q-.232-.233-.232-.576v-5.076h-2.616v5.076q0 .344-.232.576T9.885 20H6q-.402 0-.701-.299T5 19m7-6.711"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3.692v-5.077q0-.343.233-.575q.232-.233.575-.233h3q.343 0 .576.233q.232.232.232.575V19H18v-8.692q0-.154-.067-.28t-.183-.22L12.366 5.75q-.154-.134-.366-.134t-.365.134L6.25 9.808q-.115.096-.183-.22t-.067.28zm-1 0v-8.692q0-.384.172-.727t.474-.565l5.385-4.078q.423-.323.966-.323t.972.323l5.385 4.077q.303.222.474.566q.172.343.172.727V19q0 .402-.299.701T18 20h-3.884q-.344 0-.576-.232q-.232-.233-.232-.576v-5.076h-2.616v5.076q0 .344-.232.576T9.885 20H6q-.402 0-.701-.299T5 19m7-6.711"/></svg>
                     </div>
                     <span class="nav-text">Início</span>
                 </a>
@@ -91,9 +96,8 @@
                 </a>
             </nav>
         </footer>
-    </div> </body>
-</footer>
-        
-        <script src="../../js/common/transitions.js" defer></script> </div> 
+    </div> 
+    
+    <script src="../../js/common/transitions.js" defer></script>
 </body>
 </html>

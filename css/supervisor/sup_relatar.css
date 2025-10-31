@@ -1,6 +1,8 @@
 
 /* Herdar estilos de Solicitar para Abas, Formulário base, Modal, Toast */
-@import url('sup_solicitar.css'); /* Cuidado: Isso pode importar TUDO. Melhor copiar seções relevantes */
+@import url('sup_solicitar.css'); 
+
+
 
 /* --- Estilos Específicos para Relatar Preleção --- */
 

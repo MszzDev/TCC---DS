@@ -36,7 +36,14 @@ body {
    --toast-error-bg: #f44336;   /* Vermelho */
    --modal-warning-color: #ffc107; /* Amarelo */
 }
-
+.logo-img {
+    height: 43px; /* Ajustar se necessário */
+    position: absolute;
+    left: 50%;
+    top: 50%; /* <-- LINHA ADICIONADA */
+    transform: translate(-50%, -50%); /* <-- LINHA MODIFICADA */
+    object-fit: contain;
+}
 /* Estrutura da Página */
 .content-area.solicitacao-content {
     padding: 15px;

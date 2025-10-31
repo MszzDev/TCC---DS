@@ -145,3 +145,10 @@
         flex: 0 0 100%; /* Garantir largura total */
     }
 }
+/* Ajuste para múltiplos botões de ação */
+.table td .btn {
+    margin-right: 5px; /* Adiciona espaço entre os botões */
+}
+.table td .btn:last-child {
+    margin-right: 0;
+}

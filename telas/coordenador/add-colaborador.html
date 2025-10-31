@@ -35,6 +35,9 @@
                         <a href="units.html" class="nav-link">
                             <i class="fas fa-building fa-fw"></i> Unidades
                         </a>
+                        <a href="transferir-colaborador.html" class="nav-link">
+                            <i class="fas fa-exchange-alt fa-fw"></i> Transferências
+                        </a>
                         <a href="prelecoes.html" class="nav-link">
                             <i class="fas fa-chalkboard-teacher fa-fw"></i> Preleções
                         </a>
@@ -62,14 +65,15 @@
         <main class="main-content">
             <header class="main-header">
                 <div class="header-left">
-                    <img src="../../img/logo_sigo.png" alt="Logo SIGO" class="sigo-logo-header">
                 </div>
                 <div class="user-profile">
                     <div class="user-info">
                         <a href="profile.html" class="user-name">Miguel Soares</a>
                         <span class="user-role">Coordenador</span>
                     </div>
-                    <img src="https://via.placeholder.com/40/1a3a52/ffffff?text=MS" alt="Avatar do usuário" class="rounded-circle">
+                    <img src="../../img/perf.png" alt="User Avatar" class="rounded-circle">
+                    <button id="logout-button" class="btn btn-logout" title="Sair">
+                        <i class="fas fa-sign-out-alt"></i> </button>
                 </div>
             </header>
 
@@ -170,7 +174,39 @@
                                 <input type="text" id="bairro" name="bairro" class="form-control">
                             </div>
                         </div>
+                        <h4 class="form-section-title">Dados Bancários</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="banco">Banco</label>
+                                <input type="text" id="banco" name="banco" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="agencia">Agência</label>
+                                <input type="text" id="agencia" name="agencia" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="conta">Conta (com dígito)</label>
+                                <input type="text" id="conta" name="conta" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_conta">Tipo (Ex: Corrente, Poupança)</label>
+                                <input type="text" id="tipo_conta" name="tipo_conta" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="chave_pix">Chave Pix</label>
+                                <input type="text" id="chave_pix" name="chave_pix" class="form-control">
+                            </div>
+                        </div>
                         
+                        <div class="form-actions">
+                            <a href="colaboradores.html" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Salvar Colaborador</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
                         <div class="form-actions">
                             <a href="colaboradores.html" class="btn btn-secondary">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Salvar Colaborador</button>

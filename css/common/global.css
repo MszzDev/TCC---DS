@@ -33,6 +33,7 @@
     --transition-timing-function: ease;
 }
 
+
 /* Adicionando transições suaves para elementos interativos */
 .sidebar .nav-link,
 .btn, .btn-primary, .btn-outline-primary, .btn-danger, .btn-sm,
